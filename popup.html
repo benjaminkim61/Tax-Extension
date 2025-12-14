@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tax Calculator</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <h1>Tax Calculator</h1>
+      <button class="settings-btn" id="settingsBtn">⚙️</button>
+    </div>
+
+    <!-- Main Display (Hidden initially) -->
+    <div class="main-view" id="mainView">
+      <div class="result-card">
+        <div class="amount-section">
+          <p class="label">Original Amount</p>
+          <div class="amount-display">
+            <span class="currency">$</span>
+            <span class="number" id="originalAmount">0.00</span>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="amount-section">
+          <p class="label">Tax Rate</p>
+          <div class="tax-rate-display" id="taxRateDisplay">1.13x</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="amount-section total">
+          <p class="label">Total with Tax</p>
+          <div class="amount-display total-amount">
+            <span class="currency">$</span>
+            <span class="number" id="totalAmount">0.00</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="action-buttons">
+        <button class="btn btn-secondary" id="copyBtn">📋 Copy Total</button>
+        <button class="btn btn-primary" id="openSettingsBtn">Settings</button>
+      </div>
+
+      <p class="hint">Highlight a number on any webpage to calculate</p>
+    </div>
+
+    <!-- Settings View -->
+    <div class="settings-view" id="settingsView">
+      <button class="back-btn" id="backBtn">← Back</button>
+
+      <h2>Settings</h2>
+
+      <div class="settings-group">
+        <label for="taxRateInput">Tax Multiplier (e.g., 1.13 for 13%)</label>
+        <div class="input-group">
+          <span class="currency-small">×</span>
+          <input 
+            type="number" 
+            id="taxRateInput" 
+            step="0.01" 
+            min="0.01" 
+            max="10"
+            placeholder="1.13"
+          >
+        </div>
+      </div>
+
+      <div class="preset-rates">
+        <p class="preset-label">Quick Presets</p>
+        <div class="preset-buttons">
+          <button class="preset-btn" data-rate="1.05">+5%</button>
+          <button class="preset-btn" data-rate="1.08">+8%</button>
+          <button class="preset-btn" data-rate="1.10">+10%</button>
+          <button class="preset-btn" data-rate="1.13">+13%</button>
+          <button class="preset-btn" data-rate="1.15">+15%</button>
+          <button class="preset-btn" data-rate="1.20">+20%</button>
+        </div>
+      </div>
+
+      <button class="btn btn-primary" id="saveBtn">Save Settings</button>
+    </div>
+
+    <!-- Empty State -->
+    <div class="empty-state" id="emptyState">
+      <div class="empty-icon">📍</div>
+      <p class="empty-title">No Number Selected</p>
+      <p class="empty-message">Highlight a number on any webpage and it will appear here</p>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
